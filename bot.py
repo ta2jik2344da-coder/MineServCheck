@@ -1,4 +1,4 @@
- from decouple import config
+import decouple
 import aiogram
 import logging
 import asyncio
