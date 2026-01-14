@@ -1,9 +1,8 @@
 from aiogram import Bot, Dispatcher, types, executor
-from dotenv import load_dotenv
+from decouple import config
 import logging
 import asyncio
 import inspect
-import random
 
 # Mock класс для симуляции сервера Aternos
 class MockServer:
@@ -21,13 +20,12 @@ class MockServer:
         await asyncio.sleep(1)
         self.status_value = "online"
 
-load_dotenv()  # Загружает .env файл
+BOT_TOKEN = config('BOT_TOKEN')
+bot = Bot(token=BOT_TOKEN)
+dp = Dispatcher(bot)
 
-BOT_TOKEN = os.getenv('BOT_TOKEN')
-
-# Инициализируем безопасно
-client = None
 server = MockServer()
+logging.basicConfig(level=logging.INFO)
 logging.info(f"Подключился к серверу: {server.name}")
 
 def get_keyboard():
