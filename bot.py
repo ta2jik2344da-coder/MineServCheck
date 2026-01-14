@@ -1,5 +1,5 @@
 from aiogram import Bot, Dispatcher, types, executor
-from decouple import config
+from dotenv import load_dotenv
 import logging
 import asyncio
 import inspect
@@ -21,16 +21,9 @@ class MockServer:
         await asyncio.sleep(1)
         self.status_value = "online"
 
-logging.basicConfig(level=logging.INFO)
+load_dotenv()  # Загружает .env файл
 
-BOT_TOKEN = config('TELEGRAM_TOKEN', default=None)
-
-if not BOT_TOKEN:
-    logging.error("TELEGRAM_TOKEN не задан в .env — завершение.")
-    raise SystemExit("TELEGRAM_TOKEN required")
-
-bot = Bot(token=BOT_TOKEN)
-dp = Dispatcher(bot)
+BOT_TOKEN = os.getenv('BOT_TOKEN')
 
 # Инициализируем безопасно
 client = None
