@@ -1,5 +1,5 @@
-from aiogram import Bot, Dispatcher, types, executor
-from decouple import config
+ from decouple import config
+import aiogram
 import logging
 import asyncio
 import inspect
