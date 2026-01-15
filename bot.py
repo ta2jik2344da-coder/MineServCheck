@@ -1,6 +1,6 @@
 import decouple
 import aiogram
-import logging
+import dotenv
 import asyncio
 import inspect
 
@@ -20,9 +20,8 @@ class MockServer:
         await asyncio.sleep(1)
         self.status_value = "online"
 
-BOT_TOKEN = config('BOT_TOKEN')
-bot = Bot(token=BOT_TOKEN)
-dp = Dispatcher(bot)
+load_dotenv() 
+BOT_TOKEN = os.getenv('BOT_TOKEN') 
 
 server = MockServer()
 logging.basicConfig(level=logging.INFO)
