@@ -1,2 +1,3 @@
 aiogram
 python-decouple
+dotenv
