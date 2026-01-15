@@ -3,7 +3,6 @@ import aiogram
 import dotenv
 import asyncio
 import inspect
-import echo
 
 # Mock класс для симуляции сервера Aternos
 class MockServer:
